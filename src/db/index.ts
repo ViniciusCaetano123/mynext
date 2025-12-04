@@ -1,14 +1,9 @@
 import { Client, QueryConfig } from "pg";
 
-const configDb = {
-  user: process.env.POSTGRES_USER,
-  password: process.env.POSTGRES_PASSWORD,
-  host: process.env.POSTGRES_HOST,
-  port: parseInt(process.env.POSTGRES_PORT || "5432"),
-  database: process.env.POSTGRES_DB,
-};
 export async function query(sql: string | QueryConfig) {
-  const client = new Client(configDb);
+  const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+  });
   try {
     await client.connect();
     return await client.query(sql);
