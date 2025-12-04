@@ -6,10 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "knex": "knex --knexfile knexfile.ts",
+    "migrate": "knex --knexfile knexfile.ts migrate:latest",
+    "migrate:rollback": "knex --knexfile knexfile.ts migrate:rollback",
+    "migrate:make": "knex --knexfile knexfile.ts migrate:make",
+    "seed:run": "knex --knexfile knexfile.ts seed:run"
   },
   "dependencies": {
-    "next": "16.0.6",
+    "knex": "^3.1.0",
+    "next": "^16.0.7",
     "pg": "^8.16.3",
     "react": "19.2.0",
     "react-dom": "19.2.0"
@@ -23,6 +29,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.0.6",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }
